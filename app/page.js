@@ -1,11 +1,6 @@
-import Header from "@/components/common/Header";
-
 export default function Home() {
   return (
     <main className="flex flex-col min-h-screen">
-      {/* header section */}
-      <Header />
-      {/* main content section */}
       <div className="flex flex-row">
         {/* sidebar section */}
         <div>
