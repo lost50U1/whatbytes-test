@@ -10,6 +10,7 @@
   --color-secondary: #576070;
   --color-tertiary: #3853db;
   --color-lightgray: #a6abb3;
+  --color-darkblue: #132278;
 }
 
 @theme inline {
@@ -67,6 +68,10 @@ body {
 
 .card-title {
   @apply text-primary font-semibold;
+}
+
+.blue-button {
+  @apply bg-[#132278] text-white font-semibold text-sm px-6 py-3 rounded-md border-2 border-primary hover:bg-[#132278]/80 transition-all duration-300;
 }
 
 /* custom css for avatar mask  */
