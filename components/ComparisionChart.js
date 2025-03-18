@@ -6,6 +6,7 @@ import {
   Legend,
   Line,
   LineChart,
+  ReferenceLine,
   Tooltip,
   XAxis,
   YAxis,
@@ -24,34 +25,24 @@ export default function ComparisionChart({ percentage, averatePercent }) {
 
   const data = [
     {
-      name: "0",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
+      percentile: 0,
+      numberOfStudent: 2,
     },
     {
-      name: "25",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
+      percentile: 25,
+      numberOfStudent: 1,
     },
     {
-      name: "50",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
+      percentile: 50,
+      numberOfStudent: 6,
     },
     {
-      name: "75",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
+      percentile: 75,
+      numberOfStudent: 8,
     },
     {
-      name: "100",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
+      percentile: 100,
+      numberOfStudent: 4,
     },
   ];
 
@@ -65,9 +56,56 @@ export default function ComparisionChart({ percentage, averatePercent }) {
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <Tooltip />
-          <Line type="monotone" dataKey="pv" stroke="#8884d8" />
+          <XAxis
+            dataKey="percentile"
+            type="number"
+            domain={[0, 100]}
+            tick={{ fill: "#171717" }}
+            tickLine={{ stroke: "#171717" }}
+            label={{
+              value: "Percentage (%)",
+              position: "bottom",
+              offset: 0,
+              fill: "#171717",
+            }}
+          />
+          <YAxis
+            tick={{ fill: "#171717" }}
+            tickLine={{ stroke: "#171717" }}
+            label={{
+              value: "Number of Students",
+              angle: -90,
+              position: "insideLeft",
+              fill: "#171717",
+            }}
+          />
+          <Tooltip
+            contentStyle={{
+              backgroundColor: "#fff",
+              border: "1px solid #132278",
+              borderRadius: "8px",
+            }}
+            formatter={(value, name) => [
+              value,
+              name === "numberOfStudent" ? "Number of Students" : name,
+            ]}
+            labelFormatter={(label) => `${label}`}
+          />
+          <Legend />
+          <ReferenceLine
+            x={Math.min(Math.max(percentage, 0), 100)}
+            stroke="gray"
+            label="Your Percentile"
+          />
+          <Line
+            type="monotone"
+            dataKey="numberOfStudent"
+            stroke="#132278"
+            strokeWidth={2}
+            name="Number of Students"
+            dot={{ fill: "#132278", strokeWidth: 2 }}
+            activeDot={{ r: 8 }}
+          />
         </LineChart>
       </div>
     </div>
