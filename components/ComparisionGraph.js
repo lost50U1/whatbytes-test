@@ -21,10 +21,10 @@ export default function ComparisionGraph() {
         </p>
         <div>graph icon</div>
       </div>
-      <ComparisionChart
+      {/* <ComparisionChart
         percentage={percentage}
         averatePercent={averatePercent}
-      />
+      /> */}
     </div>
   );
 }
