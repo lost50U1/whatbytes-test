@@ -9,7 +9,7 @@ export default function QuickStatistics() {
   return (
     <div className="card">
       <h3 className="card-title">Quick Statistics</h3>
-      <div className="mt-4 lg:mt-7 flex flex-col sm:flex-row justify-between gap-4">
+      <div className="mt-4 lg:mt-7 flex flex-col sm:flex-row justify-between gap-4 flex-wrap">
         <div className="flex items-center gap-4">
           <div className="bg-[#F4F6F8] rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center flex-shrink-0">
             <Icon icon="noto:trophy" className="w-5 h-5 sm:w-6 sm:h-6" />

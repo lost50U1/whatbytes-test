@@ -102,7 +102,7 @@ export default function SkillList() {
 
   return (
     <div className="card">
-      <div className="flex justify-between items-center gap-4">
+      <div className="flex justify-between items-center gap-4 flex-wrap">
         <Image src={htmlLogo} alt="html logo" width={53} height={76} />
         <div>
           <h3 className="text-primary font-bold text-lg">
