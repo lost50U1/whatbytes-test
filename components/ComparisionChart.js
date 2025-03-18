@@ -56,18 +56,20 @@ export default function ComparisionChart({ percentage, averatePercent }) {
   ];
 
   return (
-    <div className="mt-8 lg:mt-16">
-      <LineChart
-        width={730}
-        height={250}
-        data={data}
-        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <Tooltip />
-        <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-      </LineChart>
+    <div className="mt-8 lg:mt-16 w-full overflow-x-auto">
+      <div className="min-w-[730px]">
+        <LineChart
+          width={730}
+          height={250}
+          data={data}
+          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <Tooltip />
+          <Line type="monotone" dataKey="pv" stroke="#8884d8" />
+        </LineChart>
+      </div>
     </div>
   );
 }

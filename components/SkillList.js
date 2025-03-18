@@ -11,6 +11,11 @@ export default function SkillList() {
   const { rank, percentile, score, setRank, setPercentile, setScore } =
     useContext(RankContext);
   const [isOpen, setIsOpen] = useState(false);
+  const [errors, setErrors] = useState({
+    rank: "",
+    percentile: "",
+    score: "",
+  });
 
   const handleOpenModal = () => {
     setIsOpen(true);
@@ -18,13 +23,81 @@ export default function SkillList() {
 
   const handleCloseModal = () => {
     setIsOpen(false);
+    setErrors({ rank: "", percentile: "", score: "" });
+  };
+
+  const validateInput = (value, field) => {
+    if (!value) {
+      setErrors((prev) => ({
+        ...prev,
+        [field]:
+          field === "rank"
+            ? "Required | Should be a number"
+            : field === "percentile"
+            ? "Required | Percentile 0 - 100"
+            : "Required | Score 0 - 15",
+      }));
+      return false;
+    }
+
+    if (isNaN(value)) {
+      setErrors((prev) => ({
+        ...prev,
+        [field]:
+          field === "rank"
+            ? "Required | Should be a number"
+            : field === "percentile"
+            ? "Required | Percentile 0 - 100"
+            : "Required | Score 0 - 15",
+      }));
+      return false;
+    }
+
+    // Additional range validations for percentile and score
+    if (field === "percentile") {
+      const percentileValue = Number(value);
+      if (percentileValue < 0 || percentileValue > 100) {
+        setErrors((prev) => ({
+          ...prev,
+          percentile: "Required | Percentile 0 - 100",
+        }));
+        return false;
+      }
+    }
+
+    if (field === "score") {
+      const scoreValue = Number(value);
+      if (scoreValue < 0 || scoreValue > 15) {
+        setErrors((prev) => ({
+          ...prev,
+          score: "Required | Score 0 - 15",
+        }));
+        return false;
+      }
+    }
+
+    setErrors((prev) => ({ ...prev, [field]: "" }));
+    return true;
+  };
+
+  const handleInputChange = (e, field, setter) => {
+    const value = e.target.value;
+    setter(value);
+    validateInput(value, field);
   };
 
   const handleSave = () => {
-    setRank(rank);
-    setPercentile(percentile);
-    setScore(score);
-    setIsOpen(false);
+    const isRankValid = validateInput(rank, "rank");
+    const isPercentileValid = validateInput(percentile, "percentile");
+    const isScoreValid = validateInput(score, "score");
+
+    if (isRankValid && isPercentileValid && isScoreValid) {
+      setRank(rank);
+      setPercentile(percentile);
+      setScore(score);
+      setIsOpen(false);
+      setErrors({ rank: "", percentile: "", score: "" });
+    }
   };
 
   return (
@@ -57,12 +130,20 @@ export default function SkillList() {
                   </h4>
                 </div>
               </div>
-              <input
-                type="number"
-                value={rank}
-                onChange={(e) => setRank(e.target.value)}
-                className="border border-tertiary rounded-lg p-2 w-full sm:w-auto"
-              />
+              <div className="flex flex-col gap-1 w-full sm:w-auto">
+                <input
+                  type="text"
+                  value={rank}
+                  onChange={(e) => handleInputChange(e, "rank", setRank)}
+                  className={`border ${
+                    errors.rank ? "border-red-500" : "border-tertiary"
+                  } rounded-lg p-2 w-full sm:w-auto text-primary font-semibold placeholder:text-primary/65`}
+                  placeholder="Rank"
+                />
+                {errors.rank && (
+                  <span className="text-red-500 text-sm">{errors.rank}</span>
+                )}
+              </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between sm:items-center">
               <div className="flex items-center gap-4">
@@ -75,12 +156,24 @@ export default function SkillList() {
                   </h4>
                 </div>
               </div>
-              <input
-                type="number"
-                value={percentile}
-                onChange={(e) => setPercentile(e.target.value)}
-                className="border border-tertiary rounded-lg p-2 w-full sm:w-auto"
-              />
+              <div className="flex flex-col gap-1 w-full sm:w-auto">
+                <input
+                  type="text"
+                  value={percentile}
+                  onChange={(e) =>
+                    handleInputChange(e, "percentile", setPercentile)
+                  }
+                  className={`border ${
+                    errors.percentile ? "border-red-500" : "border-tertiary"
+                  } rounded-lg p-2 w-full sm:w-auto text-primary font-semibold placeholder:text-primary/65`}
+                  placeholder="Percentile"
+                />
+                {errors.percentile && (
+                  <span className="text-red-500 text-sm">
+                    {errors.percentile}
+                  </span>
+                )}
+              </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between sm:items-center">
               <div className="flex items-center gap-4">
@@ -94,12 +187,20 @@ export default function SkillList() {
                   </h4>
                 </div>
               </div>
-              <input
-                type="number"
-                value={score}
-                onChange={(e) => setScore(e.target.value)}
-                className="border border-tertiary rounded-lg p-2 w-full sm:w-auto"
-              />
+              <div className="flex flex-col gap-1 w-full sm:w-auto">
+                <input
+                  type="text"
+                  value={score}
+                  onChange={(e) => handleInputChange(e, "score", setScore)}
+                  className={`border ${
+                    errors.score ? "border-red-500" : "border-tertiary"
+                  } rounded-lg p-2 w-full sm:w-auto text-primary font-semibold placeholder:text-primary/65`}
+                  placeholder="Score"
+                />
+                {errors.score && (
+                  <span className="text-red-500 text-sm">{errors.score}</span>
+                )}
+              </div>
             </div>
           </div>
           <div className="flex justify-end items-center gap-8">
