@@ -11,15 +11,9 @@ export default function Header() {
       {/* profile  */}
       <div className="flex items-center gap-2 border-2 border-[#E4EBF1] rounded-xl p-2">
         <div className="avatar">
-          <Image
-            src={profile}
-            alt="profile"
-            width={38}
-            height={38}
-            className="rounded-full"
-          />
+          <Image src={profile} alt="profile" width={38} height={38} />
         </div>
-        <p>Biruk Moges</p>
+        <p className="text-primary font-semibold">Biruk Moges</p>
       </div>
     </header>
   );
