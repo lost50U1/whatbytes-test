@@ -1,7 +1,5 @@
 import Image from "next/image";
-
 import { logo, profile } from "@/utils";
-
 export default function Header() {
   return (
     <header className="header">
@@ -12,13 +10,15 @@ export default function Header() {
       </div>
       {/* profile  */}
       <div className="flex items-center gap-2 border-2 border-[#E4EBF1] rounded-xl p-2">
-        <Image
-          src={profile}
-          alt="profile"
-          className="rounded-full"
-          width={38}
-          height={38}
-        />
+        <div className="avatar">
+          <Image
+            src={profile}
+            alt="profile"
+            width={38}
+            height={38}
+            className="rounded-full"
+          />
+        </div>
         <p>Biruk Moges</p>
       </div>
     </header>

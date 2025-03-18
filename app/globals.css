@@ -5,12 +5,20 @@
   --foreground: #171717;
 }
 
+@theme {
+  --color-primary: #000000;
+  --color-secondary: #576070;
+  --color-tertiary: #3853DB;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
+
+
 
 body {
   background: var(--background);
@@ -44,8 +52,13 @@ body {
   }
 }
 
-/* custom styles  */
+/* component styles  */
 
 .header {
   @apply flex items-center justify-between px-4 py-6 border-b border-gray-200 sm:py-10 sm:px-8;
 }
+
+/* custom css for avatar mask  */
+
+
+
