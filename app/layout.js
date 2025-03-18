@@ -30,7 +30,9 @@ export default function RootLayout({ children }) {
           {/* sidebar */}
           <Sidebar />
           {/* content */}
-          <main className="w-[80%] p-4 lg:px-16 lg:py-12">{children}</main>
+          <main className="flex-1 w-[80%] p-4 lg:pl-16 lg:pr-5 lg:py-12">
+            {children}
+          </main>
         </div>
       </body>
     </html>

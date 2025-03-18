@@ -8,7 +8,7 @@
 @theme {
   --color-primary: #000000;
   --color-secondary: #576070;
-  --color-tertiary: #3853DB;
+  --color-tertiary: #3853db;
 }
 
 @theme inline {
@@ -17,8 +17,6 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
-
-
 
 body {
   background: var(--background);
@@ -58,7 +56,12 @@ body {
   @apply flex items-center justify-between px-4 py-6 border-b border-gray-200 sm:py-10 sm:px-8;
 }
 
+.card {
+  @apply border border-gray-200 rounded-xl py-6 px-4 lg:py-9 lg:px-6;
+}
+
+.card2 {
+  @apply border border-gray-200 rounded-xl py-6 px-4 lg:py-11 lg:px-7;
+}
+
 /* custom css for avatar mask  */
-
-
-
