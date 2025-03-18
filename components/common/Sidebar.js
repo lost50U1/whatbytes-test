@@ -9,11 +9,11 @@ export default function Sidebar() {
   const isActive = (path) => pathname === path;
 
   return (
-    <aside className="pr-6 border-r border-gray-200 w-[20%] mt-14">
+    <aside className="pr-6 border-r border-gray-200 w-[20%] pt-14 flex flex-col min-h-screen">
       <nav>
         <ul className="flex flex-col gap-3.5 font-bold">
           <li
-            className={`py-6 px-7 ${
+            className={`py-6 px-4 lg:px-7 ${
               isActive("/")
                 ? "text-tertiary bg-[#F4F6F8] rounded-r-4xl"
                 : "text-secondary"
@@ -22,7 +22,7 @@ export default function Sidebar() {
             <Link href="/">Dashboard</Link>
           </li>
           <li
-            className={`py-6 px-7 ${
+            className={`py-6 px-4 lg:px-7 ${
               isActive("/skilltest")
                 ? "text-tertiary bg-[#F4F6F8] rounded-r-4xl"
                 : "text-secondary"
@@ -31,7 +31,7 @@ export default function Sidebar() {
             <Link href="/skilltest">Skill Test</Link>
           </li>
           <li
-            className={`py-6 px-7 ${
+            className={`py-6 px-4 lg:px-7 ${
               isActive("/internship")
                 ? "text-tertiary bg-[#F4F6F8] rounded-r-4xl"
                 : "text-secondary"
