@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Icon } from "@iconify/react";
 import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
@@ -11,7 +12,7 @@ export default function Sidebar() {
   return (
     <aside className="pr-6 border-r border-gray-200 w-[20%] pt-14 flex flex-col min-h-screen">
       <nav>
-        <ul className="flex flex-col gap-3.5 font-bold">
+        <ul className="flex flex-col gap-3.5 font-bold text-xl">
           <li
             className={`py-6 px-4 lg:px-7 ${
               isActive("/")
@@ -19,7 +20,10 @@ export default function Sidebar() {
                 : "text-secondary"
             }`}
           >
-            <Link href="/">Dashboard</Link>
+            <Link href="/" className="flex items-center gap-6">
+              <Icon icon="ri:bar-chart-fill" className="text-2xl" />
+              <span>Dashboard</span>
+            </Link>
           </li>
           <li
             className={`py-6 px-4 lg:px-7 ${
@@ -28,7 +32,10 @@ export default function Sidebar() {
                 : "text-secondary"
             }`}
           >
-            <Link href="/skilltest">Skill Test</Link>
+            <Link href="/skilltest" className="flex items-center gap-6">
+              <Icon icon="mdi:award" className="text-2xl" />
+              <span>Skill Test</span>
+            </Link>
           </li>
           <li
             className={`py-6 px-4 lg:px-7 ${
@@ -37,7 +44,10 @@ export default function Sidebar() {
                 : "text-secondary"
             }`}
           >
-            <Link href="/internship">Internship</Link>
+            <Link href="/internship" className="flex items-center gap-6">
+              <Icon icon="grommet-icons:document" className="text-2xl" />
+              <span>Internship</span>
+            </Link>
           </li>
         </ul>
       </nav>
