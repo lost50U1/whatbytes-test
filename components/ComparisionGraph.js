@@ -15,13 +15,16 @@ export default function ComparisionGraph() {
         <p>
           <span className="font-semibold">
             You scored {percentage}% percentile
-          </span>
+          </span>{" "}
           which is lower than the average percentile {averatePercent}% of all
           engineers who took this assessment
         </p>
         <div>graph icon</div>
       </div>
-      <ComparisionChart percentage={percentage} averatePercent={averatePercent} />
+      <ComparisionChart
+        percentage={percentage}
+        averatePercent={averatePercent}
+      />
     </div>
   );
 }
