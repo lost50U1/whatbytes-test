@@ -19,7 +19,7 @@ const CircularChart = ({ correct, question }) => {
     { name: "Remaining", value: question - correct },
   ];
 
-  const COLORS = ["#3B7DF5", "#EAF2FE"]; // Blue and light blue
+  const COLORS = ["#3B7DF5", "#EAF2FE"]; 
 
   return (
     <div className="mt-8 lg:mt-16 w-full h-[210px] flex items-center justify-center relative">
