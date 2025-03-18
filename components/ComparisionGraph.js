@@ -1,12 +1,13 @@
-import React from "react";
+"use client";
+
+import React, { useContext } from "react";
 import ComparisionChart from "./ComparisionChart";
+import { RankContext } from "@/context/RankContext";
 
 export default function ComparisionGraph() {
-  const correct = 12;
-  const question = 15;
-  const averatePercent = 72;
+  const { score, percentile } = useContext(RankContext);
 
-  const percentage = (correct / question) * 100;
+  const averatePercent = 72;
 
   return (
     <div className="card">
@@ -14,17 +15,17 @@ export default function ComparisionGraph() {
       <div className="mt-4 lg:mt-7 flex justify-between gap-4 lg:gap-16">
         <p>
           <span className="font-semibold">
-            You scored {percentage}% percentile
+            You scored {percentile}% percentile
           </span>{" "}
           which is lower than the average percentile {averatePercent}% of all
           engineers who took this assessment
         </p>
         <div>graph icon</div>
       </div>
-      {/* <ComparisionChart
-        percentage={percentage}
+      <ComparisionChart
+        percentage={percentile}
         averatePercent={averatePercent}
-      /> */}
+      />
     </div>
   );
 }

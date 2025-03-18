@@ -2,11 +2,14 @@
 
 import { htmlLogo } from "@/utils";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Modal from "./ui/Modal";
 import { Icon } from "@iconify/react";
+import { RankContext } from "@/context/RankContext";
 
 export default function SkillList() {
+  const { rank, percentile, score, setRank, setPercentile, setScore } =
+    useContext(RankContext);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -14,6 +17,13 @@ export default function SkillList() {
   };
 
   const handleCloseModal = () => {
+    setIsOpen(false);
+  };
+
+  const handleSave = () => {
+    setRank(rank);
+    setPercentile(percentile);
+    setScore(score);
     setIsOpen(false);
   };
 
@@ -48,7 +58,9 @@ export default function SkillList() {
                 </div>
               </div>
               <input
-                type="text"
+                type="number"
+                value={rank}
+                onChange={(e) => setRank(e.target.value)}
                 className="border border-tertiary rounded-lg p-2 w-full sm:w-auto"
               />
             </div>
@@ -64,7 +76,9 @@ export default function SkillList() {
                 </div>
               </div>
               <input
-                type="text"
+                type="number"
+                value={percentile}
+                onChange={(e) => setPercentile(e.target.value)}
                 className="border border-tertiary rounded-lg p-2 w-full sm:w-auto"
               />
             </div>
@@ -81,7 +95,9 @@ export default function SkillList() {
                 </div>
               </div>
               <input
-                type="text"
+                type="number"
+                value={score}
+                onChange={(e) => setScore(e.target.value)}
                 className="border border-tertiary rounded-lg p-2 w-full sm:w-auto"
               />
             </div>
@@ -93,7 +109,10 @@ export default function SkillList() {
             >
               Cancel
             </button>
-            <button className="blue-button flex items-center gap-2">
+            <button
+              onClick={handleSave}
+              className="blue-button flex items-center gap-2"
+            >
               Save <Icon icon="grommet-icons:link-next" />
             </button>
           </div>

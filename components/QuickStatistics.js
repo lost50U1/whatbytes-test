@@ -1,10 +1,11 @@
+"use client";
+
 import { Icon } from "@iconify/react";
-import React from "react";
+import React, { useContext } from "react";
+import { RankContext } from "@/context/RankContext";
 
 export default function QuickStatistics() {
-  const rank = 4;
-  const percentile = 90;
-  const correctAnswers = 12;
+  const { rank, percentile, score } = useContext(RankContext);
   return (
     <div className="card">
       <h3 className="card-title">Quick Statistics</h3>
@@ -44,7 +45,7 @@ export default function QuickStatistics() {
           </div>
           <div>
             <h4 className="text-primary font-semibold text-xl sm:text-2xl">
-              {correctAnswers} / 15
+              {score} / 15
             </h4>
             <p className="text-lightgray uppercase text-xs sm:text-sm">
               correct answers
