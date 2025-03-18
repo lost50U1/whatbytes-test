@@ -9,6 +9,7 @@
   --color-primary: #000000;
   --color-secondary: #576070;
   --color-tertiary: #3853db;
+  --color-lightgray: #a6abb3;
 }
 
 @theme inline {
