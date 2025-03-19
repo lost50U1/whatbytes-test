@@ -101,10 +101,7 @@ export default function ComparisionChart({ percentage, averatePercent }) {
             type="monotone"
             dataKey="numberOfStudent"
             stroke="#132278"
-            strokeWidth={2}
             name="Number of Students"
-            dot={{ fill: "#132278", strokeWidth: 2 }}
-            activeDot={{ r: 8 }}
           />
         </LineChart>
       </div>
