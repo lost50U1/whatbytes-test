@@ -29,16 +29,32 @@ export default function ComparisionChart({ percentage, averatePercent }) {
       numberOfStudent: 2,
     },
     {
+      percentile: 10,
+      numberOfStudent: 1,
+    },
+    {
       percentile: 25,
       numberOfStudent: 1,
+    },
+    {
+      percentile: 40,
+      numberOfStudent: 3,
     },
     {
       percentile: 50,
       numberOfStudent: 6,
     },
     {
+      percentile: 60,
+      numberOfStudent: 10,
+    },
+    {
       percentile: 75,
       numberOfStudent: 8,
+    },
+    {
+      percentile: 90,
+      numberOfStudent: 4,
     },
     {
       percentile: 100,
